@@ -87,7 +87,7 @@ const [data, setData] = useState<any>([]);
                                             colorScheme="red"
                                             size="sm"
                                             mt={2}
-                                            style={{ display: 'flex', gap:'5px' }}
+                                            style={{ width: "100%" }}
 
                                         >
                                             <Button
@@ -95,7 +95,7 @@ const [data, setData] = useState<any>([]);
                                             >
                                                 Delete
                                             </Button>
-                                           <Button variant="outline" colorScheme="blue" size="sm" mt={2} onClick={() => handleViewImage(CDNURL + file.name)}>
+                                           <Button variant="outline" colorScheme="blue" size="sm" onClick={() => handleViewImage(CDNURL + file.name)}>
                                                 View
                                             </Button>
                                         </ButtonGroup>
