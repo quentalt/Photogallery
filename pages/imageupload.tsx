@@ -1,20 +1,14 @@
+//image upload page with supabase upload file to bucket
 
 import { createClient } from '@supabase/supabase-js';
 import {FormEvent, useState} from 'react';
 import TabPage from "@/pages/tab_page";
 import {Button} from "@chakra-ui/react";
 
-const supabaseUrl=process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseKey=process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-if (!supabaseUrl || !supabaseKey) {
-    throw new Error('Supabase URL and/or key are not defined');
-}
-
-const supabase = createClient(
-    supabaseUrl,
-    supabaseKey
-)
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default function ImageUpload() {
     const [selectedFile, setSelectedFile] = useState<File>()
