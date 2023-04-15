@@ -8,7 +8,8 @@ import {Button} from "@chakra-ui/react";
 export default function LoginPage () {
     const supabaseClient = useSupabaseClient()
     const user = useUser()
-    const [data, setData] = useState([])
+    const [data, setData] = useState<any>([]);
+
 
     useEffect(() => {
         async function loadData() {
