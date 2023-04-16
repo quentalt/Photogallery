@@ -6,9 +6,7 @@ import Image from 'next/image';
 import styles from '../styles/gallery.module.css'
 import ImageModal from "@/pages/Modal";
 
-interface ImageData {
-    name: string;
-}
+
 
 export default function Gallery() {
 const supabase = useSupabaseClient();
@@ -63,7 +61,6 @@ const [data, setData] = useState<any>([]);
     }
 
 
-
     return (
         <div className="container" style={{ padding: '50px 0 100px 0' }}>
             <TabPage/>
@@ -71,36 +68,35 @@ const [data, setData] = useState<any>([]);
                     <div className={styles.masonry}>
                         {data.map((file: any) => (
                             <div key={file.name}>
-                            <div className="columns-1">
-                                <Card>
-                                    <CardBody>
+                            <div className="m-20 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                                    <div className="w-full h-56 bg-gray-100 group-hover:opacity-75 flex items-center justify-center text-sm text-gray-500">
                                         <Image
-                                            key={file.name}
                                             src={CDNURL + file.name}
                                             alt={file.name}
-                                            blurDataURL={CDNURL + file.name}
                                             width={300}
                                             height={300}
                                         />
-                                       <ButtonGroup
-                                            variant="outline"
-                                            colorScheme="red"
-                                            size="sm"
-                                            mt={2}
-                                            style={{ width: "100%" }}
-
-                                        >
+                                    </div>
+                                        <div className="flex items-center">
+                                        </div>
+                                        <ButtonGroup spacing="4" margin="3" mb="10">
                                             <Button
+                                                colorScheme="blue"
+                                                variant="outline"
+                                                onClick={() => handleViewImage(CDNURL + file.name)}
+                                            >
+                                                View
+                                            </Button>
+                                            <Button
+                                                colorScheme="red"
+                                                variant="outline"
                                                 onClick={() => deleteImage(file.name)}
                                             >
                                                 Delete
                                             </Button>
-                                           <Button variant="outline" colorScheme="blue" size="sm" onClick={() => handleViewImage(CDNURL + file.name)}>
-                                                View
-                                            </Button>
                                         </ButtonGroup>
-                                    </CardBody>
-                                </Card>
+
+
                             </div>
                                 {isOpen && (
                                     <ImageModal

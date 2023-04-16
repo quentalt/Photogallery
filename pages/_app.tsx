@@ -16,9 +16,9 @@ export default function MyApp({
     const [supabaseClient] = useState(() => createBrowserSupabaseClient<Database>())
     return (
         <SessionContextProvider supabaseClient={supabaseClient} initialSession={pageProps.initialSession}>
-            <ChakraBaseProvider theme={theme}>
+            <ChakraProvider  theme={theme}>
                 <Component {...pageProps} />
-            </ChakraBaseProvider>
+            </ChakraProvider >
         </SessionContextProvider>
     )
 }

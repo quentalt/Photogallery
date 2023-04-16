@@ -4,12 +4,12 @@ import { createClient } from '@supabase/supabase-js';
 import {FormEvent, useState} from 'react';
 import TabPage from "@/pages/tab_page";
 import {Button} from "@chakra-ui/react";
+import { Progress } from '@chakra-ui/react'
 
-const supabaseUrl = "https://fcgevnradkuomebumufq.supabase.co"
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjZ2V2bnJhZGt1b21lYnVtdWZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODA5NTcyNDYsImV4cCI6MTk5NjUzMzI0Nn0.TH6c1RK6-um3yUeZRGVM_GXY48tdWGm0ilaoGU1gePI"
-
-const supabase = createClient(supabaseUrl, supabaseKey);
-
+const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL as string,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
+);
 export default function ImageUpload() {
     const [selectedFile, setSelectedFile] = useState<File>()
 
@@ -40,6 +40,9 @@ export default function ImageUpload() {
             <form onSubmit={handleSubmit}>
                 <input type="file" onChange={(e) => setSelectedFile(e.target.files?.[0])} />
                 <Button type="submit">Upload</Button>
+                {selectedFile && (
+                    <Progress value={selectedFile.size} colorScheme="green" max={100} />
+                )}
             </form>
 
         </>

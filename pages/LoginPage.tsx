@@ -38,7 +38,7 @@ export default function LoginPage () {
 
     return (
         <>
-            <Button onClick={() => supabaseClient.auth.signOut()}>Sign out</Button>
+            <Button  onClick={() => supabaseClient.auth.signOut()} >Sign out</Button>
             <p>user:</p>
             <pre>{JSON.stringify(user, null, 2)}</pre>
             <pre>{JSON.stringify(data, null, 2)}</pre>

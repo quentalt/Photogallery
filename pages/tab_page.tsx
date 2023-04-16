@@ -1,12 +1,17 @@
 import {
     Tab,
     Tabs,
-    TabList,
+    TabList
 } from '@chakra-ui/react'
 import Link from "next/link";
+import ColorSwitchMode from "@/pages/colorswitchmode";
 
 export default function TabPage() {
+
+
     return (
+        <>
+            <ColorSwitchMode/>
         <Tabs variant="with-border" colorScheme={"green"}>
             <TabList>
                 <Link href={"/"}>
@@ -20,6 +25,7 @@ export default function TabPage() {
                 </Link>
             </TabList>
         </Tabs>
+        </>
     )
 }
 
